@@ -3,8 +3,17 @@ import React, {Component} from 'react';
 import './App.css';
 import Message from "./Message";
 import NavBar from "./NavBar";
+
 class App extends Component {
+    constructor() {
+        super();
+        this.state= {isLight_mode: true}
+
+    }
+
     messages=this.makeMessages()
+
+
     makeMessages() {
         const result = []
         const user=["Ykamis","Zeleph","Zoro","Toto"]
@@ -25,22 +34,20 @@ class App extends Component {
     }
 
     render() {
+
     return (
 
-
-        <div className="App">
+        <div className={this.state.isLight_mode ? "light-mode":"dark-mode"}>
             <NavBar/>
-
+            <button type="button" className="btn btn-info" onClick= {() => this.setState({isLight_mode:!this.state.isLight_mode})}>{this.state.isLight_mode ? "dark-mode":"light-mode"}</button>
 
             {this.messages.map(({txt,prt,user})=>(
                 <Message userName={user} porter={prt} texte={txt}/>
-
 
             ))}
 
 
         </div>
-
 
     )
   }
