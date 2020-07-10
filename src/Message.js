@@ -1,5 +1,5 @@
 import React from 'react';
-import './Message.css';
+import './style/Message.css';
 
 const Message=({ texte, porter,userName })=> (
     <div className="message">

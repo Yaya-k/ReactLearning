@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import './App.css';
+import './style/App.css';
 import Message from "./Message";
 import NavBar from "./NavBar";
 

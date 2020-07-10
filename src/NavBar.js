@@ -1,5 +1,5 @@
 import React from 'react';
-import './navBar.css';
+import './style/navBar.css';
 
 function toto() {
 
