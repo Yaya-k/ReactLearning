@@ -8,7 +8,8 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('listMessage')
+
+document.getElementById('listMessage')
 );
 
 // If you want your app to work offline and load faster, you can change

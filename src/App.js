@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Message from "./Message";
+import NavBar from "./NavBar";
 class App extends Component {
     messages=this.makeMessages()
     makeMessages() {
@@ -22,14 +23,25 @@ class App extends Component {
         }
         return result
     }
+
     render() {
     return (
+
+
         <div className="App">
+            <NavBar/>
+
+
             {this.messages.map(({txt,prt,user})=>(
                 <Message userName={user} porter={prt} texte={txt}/>
+
+
             ))}
 
+
         </div>
+
+
     )
   }
 }
