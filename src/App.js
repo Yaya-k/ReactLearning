@@ -7,7 +7,8 @@ import NavBar from "./NavBar";
 class App extends Component {
     constructor() {
         super();
-        this.state= {isLight_mode: true}
+        this.state= {isLight_mode: true, hideMessagesArehidden: false}
+
 
     }
 
@@ -33,16 +34,27 @@ class App extends Component {
         return result
     }
 
+
     render() {
 
     return (
 
         <div className={this.state.isLight_mode ? "light-mode":"dark-mode"}>
             <NavBar/>
-            <button type="button" className="btn btn-info" onClick= {() => this.setState({isLight_mode:!this.state.isLight_mode})}>{this.state.isLight_mode ? "dark-mode":"light-mode"}</button>
+            <button type="button" className="btn btn-info"
+                    onClick= {() => this.setState({isLight_mode:!this.state.isLight_mode})}>
+                {this.state.isLight_mode ? "dark-mode":"light-mode"}
+            </button>
+            <button type="button" className="btn btn-danger"
+                    onClick= {() => this.setState({hideMessagesArehidden:!this.state.hideMessagesArehidden})}>
+                {this.state.hideMessagesArehidden ? "Show hidden message":"hide hidden message"}
+            </button>
 
             {this.messages.map(({txt,prt,user})=>(
-                <Message userName={user} porter={prt} texte={txt}/>
+                <Message userName={user} porter={prt} texte={
+
+                    this.state.hideMessagesArehidden && prt==="hidden"?"this is a hidden message":txt
+                }/>
 
             ))}
 
