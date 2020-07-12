@@ -1,7 +1,9 @@
 import React from 'react';
 import './Message.css';
 
-const Message=({ texte, porter,userName })=> (
+
+const Message=({props , texte, porter,userName })=> (
+
     <div className="message">
 
         <div className="list-group" >
@@ -10,8 +12,14 @@ const Message=({ texte, porter,userName })=> (
                     <h5 > {userName}</h5>
                 </div>
                 <p >{texte}</p>
-                <small>{porter}</small>
-               
+                <div>
+                    <button type="button" className="btn btn-danger" id="btn" onClick={() => props.deleteMessage}>
+                        Delete
+                    </button>
+                    <small>{porter}</small>
+
+                </div>
+
             </div>
 
         </div>

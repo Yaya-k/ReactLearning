@@ -9,14 +9,15 @@ class App extends Component {
         super(props);
         this.setLight_mode = this.setLight_mode.bind(this);
         this.hideMessage = this.hideMessage.bind(this);
+        this.deleteMessage=this.deleteMessage.bind(this);
 
 
-        this.state= {isLight_mode: true, hideMessagesArehidden: false}
+
+        this.state= {isLight_mode: true, hideMessagesArehidden: false,messages:this.makeMessages()}
 
 
     }
 
-    messages=this.makeMessages()
 
 
     makeMessages() {
@@ -25,7 +26,7 @@ class App extends Component {
         const val=["visible","hidden"]
 
         while (result.length < 10) {
-            result.push({txt: "Sed cautela niSed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium, cum ego idem antea multa decreverim, que magis ad hominis dignitatem quam ad rei publicae necessitatem pertinerent? Supplicationem quindecim dierum decrevi sententia mea. Rei publicae satis erat tot dierum quot C. Mario ; dis immortalibus non erat exigua eadem gratulatio quae ex maximis bellis. Ergo ille cumulus dierum hominis est dignitati tributus.\n" +
+            result.push({id:result.length,show:true,txt: "Sed cautela niSed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium, cum ego idem antea multa decreverim, que magis ad hominis dignitatem quam ad rei publicae necessitatem pertinerent? Supplicationem quindecim dierum decrevi sententia mea. Rei publicae satis erat tot dierum quot C. Mario ; dis immortalibus non erat exigua eadem gratulatio quae ex maximis bellis. Ergo ille cumulus dierum hominis est dignitati tributus.\n" +
                     "\nmia in peiores haeserat plagas, ut narrabimus postea, aemulis consarcinantibus insidias graves apud Constantium, cetera medium principem sed siquid auribus eius huius modi quivis infudisset ignotus, acerbum et inplacabilem et in hoc causarum titulo dissimilem sui.\n" +
                     "\n",
                 prt: val[Math.floor(Math.random() * val.length)],
@@ -47,6 +48,16 @@ class App extends Component {
 
     }
 
+    deleteMessage(){
+        console.log("yaya");
+        let idM=0;
+        let interMes=this.state.messages;
+        let interMe=interMes[idM];
+        interMe.show=false;
+        interMes[idM]=interMe;
+        this.setState({messages:interMes})
+
+    }
 
 
     render() {
@@ -57,16 +68,19 @@ class App extends Component {
             <NavBar setLight_mode={this.setLight_mode} hideMessage={this.hideMessage} />
 
 
-         {/*   <button type="button" className="btn btn-danger"
-                    onClick= {() => this.setState({hideMessagesArehidden:!this.state.hideMessagesArehidden})}>
-                {this.state.hideMessagesArehidden ? "Show hidden message":"hide hidden message"}
-            </button>*/}
+            <button type="button" className="btn btn-danger"
+                    onClick= {() => this.deleteMessage(0)}>OK
 
-            {this.messages.map(({txt,prt,user})=>(
-                <Message userName={user} porter={prt} texte={
+            </button>
+
+            {this.state.messages.map(({txt,prt,user,show,id})=>(
+                show ?
+                <Message  props={this.deleteMessage}  texte={
 
                     this.state.hideMessagesArehidden && prt==="hidden"?"this is a hidden message":txt
-                }/>
+                } porter={prt}
+                         userName={user}
+                />:""
 
             ))}
 
