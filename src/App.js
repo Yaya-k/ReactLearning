@@ -25,7 +25,6 @@ class App extends Component {
 
         while (result.length < 10) {
             result.push({id:result.length,show:true,txt: "Sed cautela niSed quid est quod in hac causa maxime homines admirentur et" +
-                    " reprehendant meum consilium, cum ego idem antea multa decreverim, que magis ad hominis dignitatem quam ad rei " +
                     "publicae necessitatem pertinerent? Supplicationem quindecim dierum decrevi sententia mea. Rei publicae satis erat" +
                     " tot dierum quot C. Mario ; dis immortalibus non erat exigua eadem gratulatio quae ex maximis bellis. Ergo" +
                     " ille cumulus dierum hominis est dignitati tributus." +
