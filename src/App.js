@@ -5,8 +5,12 @@ import Message from "./Message";
 import NavBar from "./NavBar";
 
 class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.setLight_mode = this.setLight_mode.bind(this);
+        this.hideMessage = this.hideMessage.bind(this);
+
+
         this.state= {isLight_mode: true, hideMessagesArehidden: false}
 
 
@@ -34,21 +38,29 @@ class App extends Component {
         return result
     }
 
+    setLight_mode(){
+        this.setState({isLight_mode:!this.state.isLight_mode})
+
+    }
+    hideMessage(){
+        this.setState({hideMessagesArehidden:!this.state.hideMessagesArehidden})
+
+    }
+
+
 
     render() {
 
     return (
 
         <div className={this.state.isLight_mode ? "light-mode":"dark-mode"}>
-            <NavBar/>
-            <button type="button" className="btn btn-info"
-                    onClick= {() => this.setState({isLight_mode:!this.state.isLight_mode})}>
-                {this.state.isLight_mode ? "dark-mode":"light-mode"}
-            </button>
-            <button type="button" className="btn btn-danger"
+            <NavBar setLight_mode={this.setLight_mode} hideMessage={this.hideMessage} />
+
+
+         {/*   <button type="button" className="btn btn-danger"
                     onClick= {() => this.setState({hideMessagesArehidden:!this.state.hideMessagesArehidden})}>
                 {this.state.hideMessagesArehidden ? "Show hidden message":"hide hidden message"}
-            </button>
+            </button>*/}
 
             {this.messages.map(({txt,prt,user})=>(
                 <Message userName={user} porter={prt} texte={
