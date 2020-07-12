@@ -49,6 +49,7 @@ class App extends Component {
     }
 
     deleteMessage(idM){
+
         let interMes=this.state.messages;
         let interMe=interMes[idM];
         interMe.show=false;
@@ -71,9 +72,9 @@ class App extends Component {
 
             </button>
 
-            {this.state.messages.map(({txt,prt,user,show,id})=>(
+            {this.state.messages.map(({txt,prt,user,show,id},index)=>(
                 show ?
-                <Message  userName={user}  texte={
+                <Message onClick={this.deleteMessage} id={id} userName={user}  texte={
 
                     this.state.hideMessagesArehidden && prt==="hidden"?"this is a hidden message":txt
                 } porter={prt}
