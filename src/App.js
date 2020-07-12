@@ -67,11 +67,11 @@ class App extends Component {
             <NavBar setLight_mode={this.setLight_mode} hideMessage={this.hideMessage} />
 
 
-            <button type="button" className="btn btn-danger"
+          {/*  <button type="button" className="btn btn-danger"
                     onClick= {() => this.deleteMessage(0)}>OK
 
             </button>
-
+*/}
             {this.state.messages.map(({txt,prt,user,show,id},index)=>(
                 show ?
                 <Message onClick={this.deleteMessage} id={id} userName={user}  texte={
