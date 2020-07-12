@@ -8,6 +8,7 @@ const NavBar=(props)=> (
         <a className="active" >Home</a>
         <a onClick={() => props.setLight_mode()}>Light/Dark</a>
         <a onClick={() => props.hideMessage()}>view/hide hidden message</a>
+        
 
     </div>
 );
