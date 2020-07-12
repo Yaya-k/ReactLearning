@@ -48,9 +48,7 @@ class App extends Component {
 
     }
 
-    deleteMessage(){
-        console.log("yaya");
-        let idM=0;
+    deleteMessage(idM){
         let interMes=this.state.messages;
         let interMe=interMes[idM];
         interMe.show=false;
@@ -75,11 +73,11 @@ class App extends Component {
 
             {this.state.messages.map(({txt,prt,user,show,id})=>(
                 show ?
-                <Message  props={this.deleteMessage}  texte={
+                <Message  userName={user}  texte={
 
                     this.state.hideMessagesArehidden && prt==="hidden"?"this is a hidden message":txt
                 } porter={prt}
-                         userName={user}
+
                 />:""
 
             ))}
