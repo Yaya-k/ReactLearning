@@ -1,4 +1,35 @@
+## Approach 
+
+I've decided to work with reatJs.
+Since I never work with reatJs, I first read the documentation for a while and then started to implement the features. 
+
+In addition to the visible/hidden field I took the liberty to add a name field.
+
+The messages are automatically generated and the visible/hidden criteria are randomly drawn from a list of criteria. 
+So there can be no message with a visible field as there can be no message with a hidden field.
+
+you have the possibility to:
+<ul>
+  <li>Switch to dark/ligth mode</li>
+  <li>Hide/Display "hidden" messages</li>
+  <li>Delete messages</li>
+  <li>Retrieve deleted messages</li>
+
+ </ul
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation:
+<ul>
+  <li>first install node and npm.</li>
+  <li>Install Create-React-App with the npm command install --global create-react-app
+</li>
+  <li>Create your app in a folder of your choice with the command create-react-app "app name ".
+</li>
+  <li>Start the project with the npm start command</li>
+  Be careful to use the latest version.</br>
+The commands are to be entered on the cmd 
+ </ul
 
 ## Available Scripts
 
