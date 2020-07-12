@@ -1,17 +1,16 @@
 import React from 'react';
 import './style/navBar.css';
 
-function toto() {
 
 
-
-}
-
-const NavBar=()=> (
+const NavBar=(props)=> (
     <div className="topnav">
         <a className="active" >Home</a>
-        <a onClick={toto}>Hidden</a>
-        <a onClick={toto}>Visible</a>
+        <a onClick={() => props.setLight_mode()}>Light/Dark</a>
+        <a onClick={() => props.hideMessage()}>View/Hide hidden message</a>
+
+
+
     </div>
 );
 
