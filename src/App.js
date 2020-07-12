@@ -10,6 +10,7 @@ class App extends Component {
         this.setLight_mode = this.setLight_mode.bind(this);
         this.hideMessage = this.hideMessage.bind(this);
         this.deleteMessage=this.deleteMessage.bind(this);
+        this.recoverDeletedMessage=this.recoverDeletedMessage.bind(this);
 
 
 
@@ -18,7 +19,7 @@ class App extends Component {
 
     }
 
-
+    doesMessageDeleted=false;
 
     makeMessages() {
         const result = []
@@ -49,6 +50,7 @@ class App extends Component {
     }
 
     deleteMessage(idM){
+        this.doesMessageDeleted=true;
 
         let interMes=this.state.messages;
         let interMe=interMes[idM];
@@ -58,6 +60,16 @@ class App extends Component {
 
     }
 
+    recoverDeletedMessage(){
+        //deux solution salon la taille de la liste de messages
+        let interMes=this.state.messages;//this.state.messages;
+        for (let i = 0; i < interMes.length; i++) {
+            interMes[i].show=true;
+        }
+        this.doesMessageDeleted=false;
+        this.setState({messages:interMes})
+
+    }
 
     render() {
 
@@ -67,11 +79,11 @@ class App extends Component {
             <NavBar setLight_mode={this.setLight_mode} hideMessage={this.hideMessage} />
 
 
-          {/*  <button type="button" className="btn btn-danger"
-                    onClick= {() => this.deleteMessage(0)}>OK
+            <button type="button" disabled={!this.doesMessageDeleted } className="btn btn-primary"
+                    onClick= {() => this.recoverDeletedMessage()}>Recover deleted Messages
 
             </button>
-*/}
+
             {this.state.messages.map(({txt,prt,user,show,id},index)=>(
                 show ?
                 <Message onClick={this.deleteMessage} id={id} userName={user}  texte={
