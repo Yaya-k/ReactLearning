@@ -10,9 +10,6 @@ class App extends Component {
         this.setLight_mode = this.setLight_mode.bind(this);
         this.hideMessage = this.hideMessage.bind(this);
         this.deleteMessage=this.deleteMessage.bind(this);
-        this.recoverDeletedMessage=this.recoverDeletedMessage.bind(this);
-
-
 
         this.state= {isLight_mode: true, hideMessagesArehidden: false,messages:this.makeMessages()}
 
@@ -27,9 +24,14 @@ class App extends Component {
         const val=["visible","hidden"]
 
         while (result.length < 10) {
-            result.push({id:result.length,show:true,txt: "Sed cautela niSed quid est quod in hac causa maxime homines admirentur et reprehendant meum consilium, cum ego idem antea multa decreverim, que magis ad hominis dignitatem quam ad rei publicae necessitatem pertinerent? Supplicationem quindecim dierum decrevi sententia mea. Rei publicae satis erat tot dierum quot C. Mario ; dis immortalibus non erat exigua eadem gratulatio quae ex maximis bellis. Ergo ille cumulus dierum hominis est dignitati tributus.\n" +
-                    "\nmia in peiores haeserat plagas, ut narrabimus postea, aemulis consarcinantibus insidias graves apud Constantium, cetera medium principem sed siquid auribus eius huius modi quivis infudisset ignotus, acerbum et inplacabilem et in hoc causarum titulo dissimilem sui.\n" +
-                    "\n",
+            result.push({id:result.length,show:true,txt: "Sed cautela niSed quid est quod in hac causa maxime homines admirentur et" +
+                    " reprehendant meum consilium, cum ego idem antea multa decreverim, que magis ad hominis dignitatem quam ad rei " +
+                    "publicae necessitatem pertinerent? Supplicationem quindecim dierum decrevi sententia mea. Rei publicae satis erat" +
+                    " tot dierum quot C. Mario ; dis immortalibus non erat exigua eadem gratulatio quae ex maximis bellis. Ergo" +
+                    " ille cumulus dierum hominis est dignitati tributus." +
+                    "mia in peiores haeserat plagas, ut narrabimus postea, aemulis consarcinantibus insidias graves apud " +
+                    "Constantium, cetera medium principem sed siquid auribus eius huius modi quivis infudisset ignotus, acerbum " +
+                    "et inplacabilem et in hoc causarum titulo dissimilem sui.",
                 prt: val[Math.floor(Math.random() * val.length)],
                 user:user[Math.floor(Math.random() * user.length)]
             })
@@ -86,7 +88,7 @@ class App extends Component {
 
             {this.state.messages.map(({txt,prt,user,show,id},index)=>(
                 show ?
-                <Message onClick={this.deleteMessage} id={id} userName={user}  texte={
+                <Message key={index} onClick={this.deleteMessage} id={id} userName={user}  texte={
 
                     this.state.hideMessagesArehidden && prt==="hidden"?"this is a hidden message":txt
                 } porter={prt}

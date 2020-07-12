@@ -5,9 +5,9 @@ import './style/navBar.css';
 
 const NavBar=(props)=> (
     <div className="topnav">
-        <a className="active" >Home</a>
-        <a onClick={() => props.setLight_mode()}>Light/Dark</a>
-        <a onClick={() => props.hideMessage()}>View/Hide hidden message</a>
+        <button type="button" className="btn btn-success"  disabled>Home</button>
+        <button type="button" className="btn btn-secondary" onClick={() => props.setLight_mode()}>Light/Dark</button>
+        <button type="button" className="btn btn-secondary" onClick={() => props.hideMessage()}>View/Hide hidden message</button>
 
 
 
